@@ -1,0 +1,146 @@
+C:/altera/13.0sp1/MEM.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/MEM.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package types
+-- Compiling entity MEM_PHASE
+-- Compiling architecture MEM_IMPL of MEM_PHASE
+
+} {} {}} C:/altera/13.0sp1/CPU.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/CPU.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package types
+-- Compiling entity CPU
+-- Compiling architecture CPU_impl of CPU
+-- Loading package std_logic_textio
+-- Loading entity IF_PHASE
+-- Loading entity ID_PHASE
+-- Loading entity EX_PHASE
+-- Loading entity MEM_PHASE
+-- Loading entity WB_PHASE
+-- Loading entity hazard
+-- Loading entity predictor
+-- Loading entity regfile
+
+} {} {}} C:/altera/13.0sp1/WB.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/WB.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package types
+-- Compiling entity WB_PHASE
+-- Compiling architecture WB_IMPL of WB_PHASE
+
+} {} {}} C:/altera/13.0sp1/Predictor.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/Predictor.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package types
+-- Compiling entity predictor
+-- Compiling architecture predictor_impl of predictor
+
+} {} {}} C:/altera/13.0sp1/dmemory.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/dmemory.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_textio
+-- Loading package types
+-- Compiling entity dmemory
+-- Compiling architecture dmemory_impl of dmemory
+
+} {} {}} C:/altera/13.0sp1/EX.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/EX.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package types
+-- Compiling entity EX_PHASE
+-- Compiling architecture EX_IMPL of EX_PHASE
+
+} {} {}} C:/altera/13.0sp1/ID.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/ID.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package types
+-- Compiling entity ID_PHASE
+-- Compiling architecture ID_IMPL of ID_PHASE
+
+} {} {}} C:/altera/13.0sp1/IF.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/IF.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_textio
+-- Loading package types
+-- Compiling entity IF_PHASE
+-- Compiling architecture IF_IMPL of IF_PHASE
+
+} {} {}} C:/altera/13.0sp1/Project.vhd {2 {vcom -work work -2002 -explicit C:/altera/13.0sp1/Project.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package types
+-- Compiling entity Project
+-- Compiling architecture i of Project
+-- Loading entity CPU
+-- Loading package std_logic_textio
+-- Loading entity imemory
+-- Loading entity dmemory
+** Warning: [4] C:/altera/13.0sp1/Project.vhd(64): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+** Warning: [4] C:/altera/13.0sp1/Project.vhd(69): (vcom-1207) An abstract literal and an identifier must have a separator between them.
+
+} {} {}} C:/altera/13.0sp1/registry.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/registry.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package types
+-- Compiling entity regfile
+-- Compiling architecture reg_impl of regfile
+
+} {} {}} C:/altera/13.0sp1/hazard.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/hazard.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package types
+-- Compiling entity hazard
+-- Compiling architecture hazard_impl of hazard
+
+} {} {}} C:/altera/13.0sp1/imemory.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/imemory.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_textio
+-- Loading package types
+-- Compiling entity imemory
+-- Compiling architecture imemory_impl of imemory
+
+} {} {}} C:/altera/13.0sp1/types.vhd {1 {vcom -work work -2002 -explicit C:/altera/13.0sp1/types.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package types
+
+} {} {}}

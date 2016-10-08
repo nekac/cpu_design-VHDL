@@ -1,0 +1,61 @@
+A9 		MOVI 	R0, 100			; u R0 se nalazi memorijska adresa koja ce se kasnije koristiti za pristup memoriji					-- istestirana MOVI instrukcija
+AA 		LD 		R1, R0, 0		; R1 = MEM[100]																						-- istestirana LD instrukcija
+AB 		MOV 	R2, R1			; R2 = R1 <=> R2 = MEM[100]																			-- istestirana MOV instrukcija
+AC 		ST 		R2, R0, 1		; MEM[101] = MEM[100]																				-- istestirana ST instrukcija
+AD 		ADD 	R3, R1, R2		; R3 = R1 + R2 <=> R3 = MEM[100] + MEM[101] <=> R3 = 2*MEM[100]										-- istestirana ADD instrukcija
+AE 		SUB 	R4, R3, R2		; R4 = R3 - R2 <=> R4 = MEM[100]																	-- istestirana SUB instrukcija
+AF 		ADDI 	R5, R2, 3		; R5 = R2 + 3  <=> R5 = MEM[100] + 3																-- istestirana ADDI instrukcija
+B0 		SUBI 	R6, R2, 2		; R6 = R2 - 2  <=> R6 = MEM[100] - 2																-- istestirana SUBI instrukcija
+B1 		ST 		R3, R0, 2		; MEM[102] = 2*MEM[100]
+B2 		ST 		R4, R0, 3		; MEM[103] = MEM[100]
+B3 		ST 		R5, R0, 4		; MEM[104] = MEM[100] + 3
+B4 		ST 		R6, R0, 5		; MEM[105] = MEM[100] - 2
+B5 		AND 	R10, R3, R4		; R10 = R3 & R4 <=> R10 = 2*MEM[100] & MEM[100]														-- istestinara AND instrukcija
+B6 		OR 		R11, R3, R4		; R11 = R3 | R4 <=> R11 = 2*MEM[100] | MEM[100]														-- istestinara OR instrukcija
+B7 		NOT 	R12, R3, R4		; R12 = NOT(R3) <=> R12 = NOT(2*MEM[100])															-- istestirana NOT instrukcija
+B8 		XOR 	R13, R1, R2		; R13 = R1 ^ R2	<=> R13 = MEM[100] ^ MEM[100] <=> R13 = 0											-- istestirana XOR instrukcija
+B9 		ST 		R10, R0, 6		; MEM[106] = 2*MEM[100] & MEM[100]
+BA 		ST 		R11, R0, 7		; MEM[107] = 2*MEM[100] | MEM[100]
+BB		ST 		R12, R0, 8		; MEM[108] = NOT(2*MEM[100])
+BC 		ST 		R13, R0, 9		; MEM[109] = 0
+BD 		JMP 	R13, BF			; jmp BF (preskace se sledeca instrukcija), -- cilj kod provere instrukcije skokova je da se svaki put kada je ispunjen uslov skaka (ili ako je u pitanju bezuslovni skok) dodje do preskakanja instrukcije koja vrsi upis vrednosti 0 na adresu 100, i ako je na kraju u memoriji na adresi 100 ista ona vrednost koja je bila u ulaznoj data memoriji, a ne nula, znači da skokovi ispravno rade
+BE 		ST 		R13, R0, 0		; MEM[100] = 0 (ovo ne bi trebalo da se izvrsi)
+BF 		SHL 	R3, 1			; R3 = R3 << 1 <=> R3 = 2*MEM[100] << 1																-- istestirana SHL instrukcija
+C0 		SHR 	R4, 1			; R4 = R4 >> 1 <=> R4 = MEM[100] >> 1 (aritmeticko pomeranje udesno)								-- istestirana SHR instrukcija
+C1 		SAR 	R5, 2			; R5 = R5 >> 2 <=> R5 = (MEM[100] + 3) >> 2 (logicko pomeranje udesno)								-- istestirana SAR instrukcija
+C2 		ROL 	R6, 1			; R6 = R6 ROL 1 <=> R6 = (MEM[100] - 2) ROL 1														-- istestirana ROL instrukcija
+C3 		ROR 	R6, 1			; R6 = R6 ROR 1 <=> R6 = MEM[100] - 2																-- istestirana ROR instrukcija
+C4 		ST 		R3, R0, A		; MEM[10A] = R3 = 2*MEM[100] << 1
+C5 		ST 		R4, R0, B		; MEM[10B] = R3 = MEM[100] >> 1 (aritmeticko pomeranje udesno)
+C6 		ST 		R5, R0, C		; MEM[10C] = R3 = (MEM[100] + 3) >> 2 (logicko pomeranje udesno)
+C7 		ST 		R6, R0, D		; MEM[10D] = R3 = MEM[100] - 2
+C8 		MOVI 	R30, 1000		; u R30 se nalazi memorijska adresa koja ce se kasnije koristiti za poziv potprograma
+C9 		MOVI 	R19, 0			; R19 = 0
+CA 		PUSH 	R13				; na vrhu steka se nalazi vrednost registra R13, tj. vrednost 0										-- istestirana PUSH instrukcija
+CB 		POP 	R20				; skida se vrednost sa vrha steka i upisuje u registar R20, tj. R20 = 0								-- istestirana POP instrukcija
+CC 		JSR 	R30, 0			; 1. poziv potprograma																				-- istestirana JSR instrukcija
+CD 		BEQ 	R1, R2, 1		; if (R1 == R2) skip next instruction				(true)											-- istestirana BEQ instrukcija kada je uslov true
+CE 		ST 		R13, R0, 0		; MEM[100] = 0 (ovo ne bi trebalo da se izvrsi)
+CF 		BEQ 	R1, R20, 1		; if (R1 == R20) skip next instruction				(false)											-- istestirana BEQ instrukcija kada je uslov false
+D0 		JSR 	R30, 0			; 2. poziv potprograma
+D1 		BNQ 	R1, R2, 1		; if (R1 != R2) skip next instruction				(false)											-- istestirana BNQ instrukcija kada je uslov false
+D2 		JSR 	R30, 0			; 3. poziv potprograma
+D3 		BNQ 	R1, R20, 1		; if (R1 != R20) skip next instruction				(true)											-- istestirana BNQ instrukcija kada je uslov true
+D4 		ST 		R13, R0, 0		; MEM[100] = 0 (ovo ne bi trebalo da se izvrsi)
+D5 		BGT 	R3, R4, 1		; if (R3 > R4) skip next instruction				(true)											-- istestirana BGT instrukcija kada je uslov true
+D6 		ST 		R13, R0, 0		; MEM[100] = 0 (ovo ne bi trebalo da se izvrsi)
+D7 		BLT 	R3, R4, 1		; if (R3 < R4) skip next instruction				(false)											-- istestirana BLT instrukcija kada je uslov false
+D8 		JSR 	R30, 0			; 4. poziv potprograma
+D9 		BGE 	R3, R4, 1		; if (R3 >= R4) skip next instruction				(true)											-- istestirana BGE instrukcija kada je uslov true jer je op1 > op2
+DA 		ST 		R13, R0, 0		; MEM[100] = 0 (ovo ne bi trebalo da se izvrsi)
+DB 		BLE 	R3, R4, 1		; if (R3 <= R4) skip next instruction				(false)											-- istestirana BLE instrukcija kada je uslov false jer je op1 > op2
+DC 		JSR 	R30, 0			; 5. poziv potprograma
+DD 		BGE 	R1, R2, 1		; if (R1 >= R2) skip next instruction				(true)											-- istestirana BGE instrukcija kada je uslov true jer je op1 = op2
+DE 		ST 		R13, R0, 0		; MEM[100] = 0 (ovo ne bi trebalo da se izvrsi)
+DF 		BLE 	R1, R2, 1		; if (R1 <= R2) skip next instruction				(true)											-- istestirana BLE instrukcija kada je uslov true jer je op1 = op2
+E0 		ST 		R13, R0, 0		; MEM[100] = 0 (ovo ne bi trebalo da se izvrsi)
+E1 		HALT					; kraj programa																						-- istestirana HALT instrukcija
+1000 	ST 		R20, R19, 0		; MEM[R20] = R19	-- onoloko puta koliko se pozove ovaj program (u ovom testu se poziva 5 puta)
+1001 	ADDI 	R19, R19, 1		; R19 = R19 + 1		-- toliko ce se sukcesivnih memorijskih lokacija popuniti
+1002 	ADDI 	R20, R20, 1		; R20 = R20 + 1		-- pocev od adrese 0 sa sukcesivnim vrednostima pocev od vrednosti 0
+1003 	RTS						; povratak iz potprograma																			-- istestirana RTS instrukcija

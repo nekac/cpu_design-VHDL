@@ -1,0 +1,30 @@
+0 		MOVI 	R0, 0			; R0 = 0, sluzi nam za poredjenje da li se doslo do kraja pri obradi
+1 		MOVI 	R31, 1000		; u R31 se nalazi adresa pocetka niza
+2 		MOVI 	R30, 10			; u R30 se nalazi broj elemenata niza
+3 		JSR 	R0, 1200		; skok na potprogram koji vrsi sortiranje niza
+4 		HALT					; kraj programa
+1200 	LD 		R29, R31, 0		; potprogram za sortiranje niza (kroz R31 dobija pocetnu adresu niza, a kroz R30 dobija velicinu niza) - sortiranje se vrsi tako sto se svaki element poredi sa elementima iza njega i najmanji od tih elemenata (ako postoji takava) menja mesto sa poredjenim elementom
+1201 	MOV 	R19, R31		; u R29 se nalazi vrednost elementa niza do kog se stiglo pri sortiranju a u R19 je sacuvana njegova adresa
+1202 	SUBI 	R30, R30, 1		; umanjuje se broj preostalih elemenata za obradu
+1203 	BEQ 	R30, R0, 8		; ako se doslo do kraja (tj. ako je R30 == 0) skace se na RTS instrukciju (tj. na povratak iz potprograma)
+1204 	ADDI 	R31, R31, 1		; uvecava se adresa na kojoj se nalazi niz koji je potrebno porediti
+1205 	MOV 	R2, R31			; u R2 ide adresa na kojo se nalazi adresa pocetka dela niza za koji se trazi najmanji element
+1206 	MOV 	R1, R30			; u R1 ide duzina dela niza za koji se trazi najmanji element
+1207 	JSR 	R0, 1300		; skok na potprogram koji vraca minimalnu vrednost elementa niza kroz registar R3 i adresu na kojoj se nalazi taj elemnt kroz registar R13
+1208 	BGE 	R3, R29, 2		; ako je R3 >= R29 preskacu se naredne dve instrukcije
+1209 	ST 		R3, R19, 0		; ako je R3 < R29 vrsi se zamena vrednosti elemenata niza
+120A 	ST 		R29, R13, 0		; tj. element do kojeg se stiglo pri sortiranju zamenjuje se sa najmanjim elementom u preostalom delu niza
+120B 	JMP 	R0, 1200		; bezuslovni skok na pocetak potprograma za sortiranje niza
+120C 	RTS						; povratak iz potprograma koji vrsi sortiranje niza
+1300 	LD 		R3, R2, 0		; potprogram koji racuna minumalnu vrednost niza, kroz R2 dobija adresu pocetka niza, a kroz R1 dobija duzinu niza
+1301 	MOV 	R13, R2			; u R3 se nalazi vrednost prvog elementa, a u R13  se cuva adresa prvog elementa; u R3 ce se na kraju naci najmanji element a u R13 ce se naci na kojoj adresi se nalazi taj element
+1302 	SUBI 	R1, R1, 1		; umanjuje se broj preostalih elemenata za poredjenje
+1303 	BEQ 	R1, R0, 7		; ako se doslo do kraja (tj. ako je R1 == 0) skace se na RTS instrukciju (tj. na povratak iz potprograma)
+1304 	ADDI 	R2, R2, 1		; uvecava se adresa na kojoj se nalazi element koji se poredi
+1305 	LD		R4, R2, 0		; u R4 se nalazi vrednost tekuceg elementa koji se poredi sa do sada nadjenim minimumom
+1306 	BGE 	R4, R3, 2		; ako je R4 >= R3, tj. ako je tekuci element veci od trenutnog minimuma, preskacu se sledece dve instrukcije
+1307 	MOV 	R3, R4			; u suprotnov u R3 se upisuje R4, tj. trenutno najmanji element
+1308 	MOV 	R13, R2			; u R13 se cuva adresa na kojoj je nadjen minimalni element
+1309 	SUBI 	R1, R1, 1		; umanjuje se broj preostalih elemenata za poredjenje
+130A 	BNQ 	R1, R0, -7		; ako se nije doslo do kraja (tj. ako je R1 != 0) vraca se na instrukciju na adresi 1304
+130B 	RTS						; povratak iz potprograma koji racuna minimalnu vrednost niza, u R3 se nalazi vrednost najmanjeg elementa niza a u R13 se nalazi adresa tog elementa

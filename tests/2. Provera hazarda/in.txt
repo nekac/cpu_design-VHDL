@@ -1,0 +1,11 @@
+0	MOVI 	R0, 1000	; u R0 se nalazi adresa u data memoriji sa koje citamo podatak
+1	LD 		R1, R0, 0	; procitani podatak je u R1 (R1 = MEM[1000])
+2	ADDI	R1, R1, 1	; dolazi do zaustavljanja pipeline-a, jer prosledjivanje nije moguce, u sledecem taktu ce se vrsiti prosledjivanje vrednosti registra R1 iz MEM faze
+3	MOV		R2, R1		; vrsi se prosledjivanje vrednosti registra R1 iz EX faze
+4	MOV		R3, R2		; vrsi se prosledjivanje vrednosti registra R2 iz EX faze
+5	ADD		R4, R1, R2	; vrsi se prosledjivanje vrednosti registra R1 iz WB faze, dok se vrednost R2 prosledjuje iz MEM faze
+6	ST		R1, R0, 1	; vrednost registra R1 treba da bude MEM[1000]+1, i ispisuje se na MEM[1001]
+7	ST		R2, R0, 2	; vrednost registra R2 treba da bude MEM[1000]+1, i ispisuje se na MEM[1002]
+8	ST		R3, R0, 3	; vrednost registra R3 treba da bude MEM[1000]+1, i ispisuje se na MEM[1003]
+9	ST		R4, R0, 4	; vrednost registra R4 treba da bude 2*(MEM[1000]+1), i ispisuje se na MEM[1004]
+A	HALT				; zaustavljamo procesor
